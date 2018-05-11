@@ -64,23 +64,24 @@ begin
               nextState <= readData;
             when readData =>
               data_out <= data_bus;
+              set<='0';
               nextState <= idle;
             end case;
     end process;
 
-    process(currentState)
-    begin
-        case currentState is
-            when idle =>
+    -- process(currentState)
+    -- begin
+    --     --TODO: check what to do
+    --     case currentState is
+    --         when idle =>
                
-            when readAddress =>
+    --         when readAddress =>
             
-                nextState <= readData;
-            when readData =>
+    --         when readData =>
                
-        end case;
+    --     end case;
 
-    end process;
+    -- end process;
 
 end architecture;
 
