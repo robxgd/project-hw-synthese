@@ -49,28 +49,25 @@ begin
             end if;
         end if;
     end process;
-
+              
     process(currentState, nextState)
     begin
         case currentState is
             when idle =>
               if (readInstr = '1') then
-                nextState <= readingMemory;
+                nextState <= readData;
               else
                 nextState <= idle;
               end if;
-            when readingMemory =>
-              if (memReady = '1') then
-                nextstate <= incrPC;
-              else
-                nextState <= readingMemory;
-              end if;
-            when incrPC =>
-              if (readInstr = '1') then
-                nextState <= readingMemory;
-              else
-                nextState <= idle;
-              end if;
+            when readAddress =>
+              -- TODO implement logic
+
+
+              nextState <= readData;
+            when readData =>
+              -- TODO implement logic
+
+              nextState <= idle;
             end case;
     end process;
 
