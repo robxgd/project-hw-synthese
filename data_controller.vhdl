@@ -40,7 +40,7 @@ begin
         --check reset
         if (rst = '1') then
             --servo to 0 rad ==> data is 127
-            d <= std_logic_vector(127);
+            data_bus <= std_logic_vector(127);
         elsif rising_edge (clk) then
             if (set = '1') then
                 --here we don't know if data on data is addr or data
