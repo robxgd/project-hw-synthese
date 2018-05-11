@@ -1,8 +1,9 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
---this file wiil link the ports between the servo and de data_controller
 
+
+--this file wiil link the ports between the servo and de data_controller
 entity servo_controller is 
 port(
     clk           : in  std_logic                    := '0';
