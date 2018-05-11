@@ -18,7 +18,7 @@ use IEEE.numeric_std.all;
 
 
 --states: idle, data, address
-entity servo is
+entity data_controller is
     port(
         rst : in std_logic;
         clk : in std_logic;
@@ -29,7 +29,7 @@ entity servo is
         done : out std_logic) := '1';
 end entity;
 
-architecture behaviour of servo is
+architecture behaviour of data_controller is
     type state is (idle, readAddress, readData);
     signal currentState : state := idle; 
     signal nextState    : state;
@@ -45,7 +45,6 @@ begin
             if (set = '1') then
                 --here we don't know if data on data is addr or data
                 --we work with a state machine 
-
                 currentState <= nextState
             end if;
         end if;
@@ -57,7 +56,7 @@ begin
         case currentState is
             when idle =>
               nextState <= readData;
-
+                
               nextState <= idle;
             when readAddress =>
               done <= '0';
@@ -67,6 +66,20 @@ begin
               data_out <= data_bus;
               nextState <= idle;
             end case;
+    end process;
+
+    process(currentState)
+    begin
+        case currentState is
+            when idle =>
+               
+            when readAddress =>
+            
+                nextState <= readData;
+            when readData =>
+               
+        end case;
+
     end process;
 
 end architecture;

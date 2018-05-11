@@ -29,6 +29,14 @@ begin
         end if;  
     end process;
 
+    process(data)
+    begin
+
+        --TODO: check if it is the adress or the data we read
+        if 
+            
+        end if;
+    end process
     process(sc)
     begin
 
@@ -36,6 +44,7 @@ begin
         --We know the SC is 50hz 
         -- each time we com in this function we add 1 to the timer. to know tehe time we multiply the counter with the period = 20ms
         if rising_edge(sc) then
+            --TODO: check if it is the adress or the data we read
             pwm_timer <= pwm_timer + servo_period_ms;
             --Ton = (n_offset +  n_position)*Tsc
             --data is 8 bits to represent the position we want the motor to be. 
