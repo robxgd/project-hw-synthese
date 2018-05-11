@@ -24,14 +24,14 @@ entity servo is
         clk : in std_logic;
         sc: in std_logic;
         set  : in std_logic;
-        data  : in std_logic_vector; --data and address
-        pwm : out std_logic;
-        done : out std_logic);
+        data_bus  : in std_logic_vector(7 downto 0); --data and address
+        data_out : out std_logic(7 downto 0) := (others => '0');
+        done : out std_logic) := '1';
 end entity;
 
 architecture behaviour of servo is
     type state is (idle, readAddress, readData);
-    signal currentState : state; 
+    signal currentState : state := idle; 
     signal nextState    : state;
 
 begin
@@ -45,28 +45,26 @@ begin
             if (set = '1') then
                 --here we don't know if data on data is addr or data
                 --we work with a state machine 
-                currentState := nextState
+
+                currentState <= nextState
             end if;
         end if;
     end process;
-              
+
     process(currentState, nextState)
     begin
+        --TODO: check if this is not to late ant if we should work with variables?
         case currentState is
             when idle =>
-              if (readInstr = '1') then
-                nextState <= readData;
-              else
-                nextState <= idle;
-              end if;
+              nextState <= readData;
+
+              nextState <= idle;
             when readAddress =>
-              -- TODO implement logic
-
-
+              done <= '0';
+              data_out <= data_bus;
               nextState <= readData;
             when readData =>
-              -- TODO implement logic
-
+              data_out <= data_bus;
               nextState <= idle;
             end case;
     end process;

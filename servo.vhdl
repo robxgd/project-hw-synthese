@@ -16,6 +16,19 @@ entity servo is
 end entity;
 
 architecture behaviour of servo is 
+    signal pwm_timer : integer := O;
 begin 
-    
+    process(clk)
+    begin 
+        --what to do here?
+    end process;
+
+    process(sc)
+    begin
+
+        --check how long sc was high to give right value.
+        --We know the SC is 50hz 
+
+    end process;
+
 end architecture;
