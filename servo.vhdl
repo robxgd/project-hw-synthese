@@ -9,14 +9,14 @@ entity servo is
         rst : in std_logic;
         clk : in std_logic;
         sc: in std_logic;
-        set  : in std_logic;
+        -- set  : in std_logic;
         data  : in std_logic_vector(7 downto 0); --data and address
         pwm : out std_logic    
     );
 end entity;
 
 architecture behaviour of servo is 
-    signal pwm_timer : integer := O;
+    signal pwm_timer : real := 0.0;
     constant servo_freq : positive := 510200;
 	constant servo_period_ms : real :=  0.00196;
 
@@ -29,14 +29,7 @@ begin
         end if;  
     end process;
 
-    process(data)
-    begin
-
-        --TODO: check if it is the adress or the data we read
-        if 
-            
-        end if;
-    end process
+    
     process(sc)
     begin
 
@@ -44,7 +37,6 @@ begin
         --We know the SC is 50hz 
         -- each time we com in this function we add 1 to the timer. to know tehe time we multiply the counter with the period = 20ms
         if rising_edge(sc) then
-            --TODO: check if it is the adress or the data we read
             pwm_timer <= pwm_timer + servo_period_ms;
             --Ton = (n_offset +  n_position)*Tsc
             --data is 8 bits to represent the position we want the motor to be. 
@@ -52,9 +44,9 @@ begin
             -- this means we have to divide the 0.5ms in between over the 256 possibilities of the data
             --we decide to make the servo period 1.96 microsec = 0.5ms/256 
             
-            if(pwm_timer >= 1.25 + real(to_integer(unsigned(data))*servo_period_ms)) then
+            if(pwm_timer >= 1.25 + real(real(to_integer(unsigned(data)))*servo_period_ms)) then
                 pwm <= '0';
-                pwn_timer <= 0;
+                pwm_timer <= 0.0;
             end if;
         end if; 
     end process;

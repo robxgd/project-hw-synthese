@@ -5,6 +5,10 @@ use IEEE.numeric_std.all;
 
 --this file wiil link the ports between the servo and de data_controller
 entity servo_controller is 
+generic(
+		controller_address : std_logic_vector
+	);
+
 port(
     clk           : in  std_logic                    := '0';
     rst           : in  std_logic                    := '0';
@@ -23,16 +27,17 @@ architecture behaviour of servo_controller is
     signal data : std_logic_vector(7 downto 0) := (others=> '0');
 begin
     datacontroller : entity work.data_controller(behaviour)
+        generic map(controller_address => controller_address)
         port map(
             clk => clk,
             rst => rst,
             set => set,
             data_out => data,
-            data_bus <= data_bus,
-            done <= done
+            data_bus => data_bus,
+            done => done
         );
 
-    servodriver : entity work.servodriver(behaviour)
+    servo : entity work.servo(behaviour)
         port map(
             clk => clk,
             sc => sc,
