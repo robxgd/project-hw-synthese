@@ -20,15 +20,20 @@ architecture behaviour of servo is
 
     signal pwm_timer : real := 0.0;
     constant servo_freq : positive := 510200;
-	  constant servo_period_ms : real :=  0.00196;
+	constant servo_period_ms : real :=  0.00196;
 
 begin
     process(clk,rst)
     begin
+<<<<<<< HEAD
       if rst = '1' then
         pwm <= '0';
+=======
+        if rst = '1' then
+            pwm<= '0';
+>>>>>>> 599877b071b9b024704931d3dd1618b60eb66746
         --we start the pwm signal every clock. if it is not neceserry, de sc process will stop it.
-      elsif rising_edge(clk) then
+        elsif rising_edge(clk) then
             pwm <= '1';
       end if;
     end process;
@@ -47,8 +52,13 @@ begin
             -- the pwm should be high for a time between 1.25ms and 1.75ms
             -- this means we have to divide the 0.5ms in between over the 256 possibilities of the data
             --we decide to make the servo period 1.96 microsec = 0.5ms/256
+<<<<<<< HEAD
 
             if( (pwm_timer*servo_period_ms) >= 1.25 + (real(to_integer(unsigned(data)))*servo_period_ms)) then
+=======
+            --1.25/0.00196 = 637.755102041
+            if(pwm_timer >= (637.755102041) + real(real(to_integer(unsigned(data)))*servo_period_ms)) then
+>>>>>>> 599877b071b9b024704931d3dd1618b60eb66746
                 pwm <= '0';
                 pwm_timer <= 0.0;
             end if;
