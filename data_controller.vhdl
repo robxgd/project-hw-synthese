@@ -22,16 +22,12 @@ end entity;
 
 architecture behaviour of data_controller is
     --we have three types of states
-    type state is (idle, readAddress, readData);
+    type state is (idle, readAddress);
     signal currentState : state := idle;
     signal nextState    : state;
 
 begin
-<<<<<<< HEAD
     process(clk, rst)
-=======
-    process(clk,rst)
->>>>>>> 6a512c2345a98a1b30565a5adfc55a08491ec1f4
     begin
         --check reset
         if (rst = '1') then
@@ -48,30 +44,24 @@ begin
 
     process(currentState, nextState)
     begin
-        --TODO: check if this is not to late ant if we should work with variables?
         case currentState is
             when idle =>
                 staat <= "00";
-                nextState <= readAddress;
+                if(set=1) then
+                    if(data_bus = controller_address) then
+                        nextState <= readAddress;
+                    end if;
+                end if;
                 done <= '1';
             when readAddress =>
-<<<<<<< HEAD
- 
-                if(to_integer(unsigned(data_bus)) = to_integer(unsigned(controller_address))) then
-=======
                 staat <= "01";
                 done <= '0';
                 if(data_bus = controller_address) then
->>>>>>> 6a512c2345a98a1b30565a5adfc55a08491ec1f4
                     nextState <= readData;
                 else
                     nextState <= idle;
                 end if ;
-            when readData =>
-                staat <= "10";
-                done <= '0';
-                data_out <= data_bus;
-                nextState <= idle;
+       
             end case;
     end process;
 end architecture;
