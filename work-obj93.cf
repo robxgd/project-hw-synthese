@@ -1,19 +1,19 @@
 v 3
-file . "tb_servo.vhdl" "20180610162640.000" "20180610182643.215":
-  entity tb_servo at 1( 0) + 0 on 217;
-  architecture test of tb_servo at 8( 102) + 0 on 218;
-file . "servo_controller.vhdl" "20180610160058.000" "20180610182643.204":
-  entity servo_controller at 1( 0) + 0 on 215;
-  architecture behaviour of servo_controller at 25( 704) + 0 on 216;
-file . "data_controller.vhdl" "20180610154246.000" "20180610182643.182":
-  entity data_controller at 2( 2) + 0 on 211;
-  architecture behaviour of data_controller at 25( 632) + 0 on 212;
+file . "tb_servo.vhdl" "20180610162640.000" "20180610184427.290":
+  entity tb_servo at 1( 0) + 0 on 237;
+  architecture test of tb_servo at 8( 102) + 0 on 238;
+file . "servo_controller.vhdl" "20180610160058.000" "20180610184427.278":
+  entity servo_controller at 1( 0) + 0 on 235;
+  architecture behaviour of servo_controller at 25( 704) + 0 on 236;
+file . "data_controller.vhdl" "20180610164423.000" "20180610184427.256":
+  entity data_controller at 1( 0) + 0 on 231;
+  architecture behaviour of data_controller at 24( 630) + 0 on 232;
 file . "std_logic_arith.vhdl" "20180610132113.000" "20180610165537.337":
   package std_logic_arith at 1( 0) + 0 on 81 body;
   package body std_logic_arith at 178( 8823) + 0 on 82;
 file . "tb_datacontroller.vhdl" "20180610153510.000" "20180610180000.382":
   entity tb_datacontroller at 1( 0) + 0 on 169;
   architecture test of tb_datacontroller at 8( 118) + 0 on 170;
-file . "servo.vhdl" "20180610160043.000" "20180610182643.192":
-  entity servo at 1( 0) + 0 on 213;
-  architecture behaviour of servo at 18( 372) + 0 on 214;
+file . "servo.vhdl" "20180610163702.000" "20180610184427.267":
+  entity servo at 1( 0) + 0 on 233;
+  architecture behaviour of servo at 18( 372) + 0 on 234;
