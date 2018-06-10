@@ -18,15 +18,22 @@ end entity;
 
 architecture behaviour of servo is
 
-    signal pwm_timer : real := 0.0;
+    signal pwm_timer : integer := 0;
     constant servo_freq : positive := 510200;
 	constant servo_period_ms : real :=  0.00196;
 
 begin
     process(clk,rst)
     begin
+<<<<<<< HEAD
         if rst = '1' then
             pwm<= '0';
+=======
+
+        if rst = '1' then
+            pwm<= '0';
+
+>>>>>>> c2be8a06895d7c60c301d08c6e3c325525b945fd
         --we start the pwm signal every clock. if it is not neceserry, de sc process will stop it.
         elsif rising_edge(clk) then
             pwm <= '1';
@@ -41,16 +48,22 @@ begin
         --We know the SC is 50hz
         -- each time we com in this function we add 1 to the timer. to know tehe time we multiply the counter with the period = 20ms
         if rising_edge(sc) then
-            pwm_timer <= pwm_timer + servo_period_ms;
+            pwm_timer <= pwm_timer + 1;
             --Ton = (n_offset +  n_position)*Tsc
             --data is 8 bits to represent the position we want the motor to be.
             -- the pwm should be high for a time between 1.25ms and 1.75ms
             -- this means we have to divide the 0.5ms in between over the 256 possibilities of the data
             --we decide to make the servo period 1.96 microsec = 0.5ms/256
 
+<<<<<<< HEAD
             if(pwm_timer >= 1.25 + real(to_integer(unsigned(data)))*servo_period_ms) then
+=======
+            --1.25/0.00196 = 637.755102041
+            if(real(pwm_timer) >= ((1.25/servo_period_ms) + real(to_integer(unsigned(data))))) then
+
+>>>>>>> c2be8a06895d7c60c301d08c6e3c325525b945fd
                 pwm <= '0';
-                pwm_timer <= 0.0;
+                pwm_timer <= 0;
             end if;
         end if;
     end process;

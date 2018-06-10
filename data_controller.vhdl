@@ -51,15 +51,24 @@ begin
                 nextState <= readAddress;
                 done <= '1';
             when readAddress =>
+<<<<<<< HEAD
                 staat <= "01";
                 done <= '0';
                 if(data_bus = controller_address) then
+=======
+                
+                if(data_bus =controller_address) then
+>>>>>>> c2be8a06895d7c60c301d08c6e3c325525b945fd
                     nextState <= readData;
                 else
                     nextState <= idle;
                 end if ;
             when readData =>
+<<<<<<< HEAD
                 staat <= "10";
+=======
+                done <= '0';
+>>>>>>> c2be8a06895d7c60c301d08c6e3c325525b945fd
                 data_out <= data_bus;
                 nextState <= idle;
             end case;
