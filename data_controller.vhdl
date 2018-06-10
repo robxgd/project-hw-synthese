@@ -48,13 +48,14 @@ begin
                 nextState <= readAddress;
                 done <= '1';
             when readAddress =>
-                done <= '0';
+                
                 if(data_bus =controller_address) then
                     nextState <= readData;
                 else
                     nextState <= idle;
                 end if ;
             when readData =>
+                done <= '0';
                 data_out <= data_bus;
                 nextState <= idle;
             end case;
