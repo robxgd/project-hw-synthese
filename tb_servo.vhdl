@@ -66,6 +66,7 @@ begin
     begin
       -- Initialiseren
       rst <='1';
+      pos <= 125:
       wait for clkPeriod;
       rst <= '0';
       wait for 50 ms;

@@ -3,9 +3,11 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
+--use work.std_logic_arith.all;
+
 entity data_controller is
     generic(
-		controller_address : std_logic_vector
+		controller_address : std_logic_vector(7 downto 0)
 	);
 
     port(
@@ -24,44 +26,45 @@ architecture behaviour of data_controller is
     --we have three types of states
     type state is (idle, readAddress);
     signal currentState : state := idle;
-    signal nextState    : state;
 
 begin
-    process(clk, rst)
-    begin
-        --check reset
-        if (rst = '1') then
-            --servo to 0 rad ==> data is 127
-            data_out <= "01111111";
-            currentState <= idle;
-        elsif rising_edge (clk) then
-            if (set = '1') then
-                --change the state
-                currentState <= nextState;
-            end if;
-        end if;
-    end process;
+    -- process(clk, rst)
+    -- begin
+    --     --check reset
+    --     if (rst = '1') then
+    --         --servo to 0 rad ==> data is 127
+    --         data_out <= "01111111";
+    --         currentState <= idle;
+    --     elsif rising_edge (clk) then
+    --         --change the state
+    --         currentState <= nextState;
+    --     end if;
+    -- end process;
 
-    process(currentState, nextState)
+    process(clk)
     begin
+      if (rst = '1') then
+          --servo to 0 rad ==> data is 127
+          data_out <= "01111111";
+          currentState <= idle;
+      else
         case currentState is
             when idle =>
                 staat <= "00";
-                if(set=1) then
-                    if(data_bus = controller_address) then
-                        nextState <= readAddress;
+                if(set = '1') then
+                    if(data_bus= controller_address) then
+                        currentState <= readAddress;
+                        done <= '0';
                     end if;
+                else
+                  done <= '1';
                 end if;
-                done <= '1';
             when readAddress =>
                 staat <= "01";
-                done <= '0';
-                if(data_bus = controller_address) then
-                    nextState <= readData;
-                else
-                    nextState <= idle;
-                end if ;
-       
+                data_out <= data_bus;
+                currentState <= idle;
+
             end case;
+        end if;
     end process;
 end architecture;
