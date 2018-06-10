@@ -1,29 +1,15 @@
-<<<<<<< HEAD
 v 3
-file . "tb_servo.vhdl" "20180610075841.000" "20180610111709.513":
-  entity tb_servo at 1( 0) + 0 on 95;
-  architecture test of tb_servo at 8( 102) + 0 on 96;
-file . "servo_controller.vhdl" "20180517115807.000" "20180610111709.499":
-  entity servo_controller at 1( 0) + 0 on 93;
-  architecture behaviour of servo_controller at 25( 705) + 0 on 94;
-file . "servo.vhdl" "20180610091656.000" "20180610111709.486":
-  entity servo at 1( 0) + 0 on 91;
-  architecture behaviour of servo at 19( 402) + 0 on 92;
-file . "data_controller.vhdl" "20180610091700.000" "20180610111709.475":
-  entity data_controller at 2( 1) + 0 on 89;
-  architecture behaviour of data_controller at 22( 505) + 0 on 90;
-=======
-v 4
-file . "tb_servo.vhdl" "f115610d0be258e23112f993451f24a801308880" "20180610092140.299":
-  entity tb_servo at 1( 0) + 0 on 57;
-  architecture test of tb_servo at 8( 102) + 0 on 58;
-file . "servo.vhdl" "c7e3774a19a7320f0a57ce43a11cf639f4195070" "20180610092140.222":
-  entity servo at 1( 0) + 0 on 53;
-  architecture behaviour of servo at 19( 402) + 0 on 54;
-file . "data_controller.vhdl" "3f0d2e5ba9c9114095d5cffe0c32b7d01556ef89" "20180610092140.120":
-  entity data_controller at 2( 1) + 0 on 51;
-  architecture behaviour of data_controller at 22( 505) + 0 on 52;
-file . "servo_controller.vhdl" "e90ec88691ef8870f39c34033836e3b6a7b029aa" "20180610092140.261":
-  entity servo_controller at 1( 0) + 0 on 55;
-  architecture behaviour of servo_controller at 25( 705) + 0 on 56;
->>>>>>> 599877b071b9b024704931d3dd1618b60eb66746
+file . "servo_controller.vhdl" "20180517115807.000" "20180610122352.674":
+  entity servo_controller at 1( 0) + 0 on 41;
+  architecture behaviour of servo_controller at 25( 705) + 0 on 42;
+file . "data_controller.vhdl" "20180610122338.000" "20180610142759.026":
+  entity data_controller at 2( 1) + 0 on 55;
+  architecture behaviour of data_controller at 23( 563) + 0 on 56;
+file . "servo.vhdl" "20180610095634.000" "20180610122352.648":
+  entity servo at 1( 0) + 0 on 39;
+  architecture behaviour of servo at 19( 402) + 0 on 40;
+file . "tb_servo.vhdl" "20180610102346.000" "20180610122352.685":
+  entity tb_servo at 1( 0) + 0 on 43;
+file . "tb_datacontroller.vhdl" "20180610122748.000" "20180610142804.210":
+  entity tb_datacontroller at 1( 0) + 0 on 57;
+  architecture test of tb_datacontroller at 8( 111) + 0 on 58;

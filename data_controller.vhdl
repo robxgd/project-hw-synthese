@@ -15,7 +15,8 @@ entity data_controller is
         set  : in std_logic;
         data_bus  : in std_logic_vector(7 downto 0); --data and address is shared on this bus
         data_out : out std_logic_vector(7 downto 0) := (others => '0');
-        done : out std_logic := '1'
+        done : out std_logic := '1';
+        staat : out std_logic_vector(1 downto 0) := "00"
         );
 end entity;
 
@@ -26,12 +27,13 @@ architecture behaviour of data_controller is
     signal nextState    : state;
 
 begin
-    process(clk)
+    process(clk,rst)
     begin
         --check reset
         if (rst = '1') then
             --servo to 0 rad ==> data is 127
             data_out <= "01111111";
+            currentState <= idle;
         elsif rising_edge (clk) then
             if (set = '1') then
                 --change the state
@@ -45,9 +47,11 @@ begin
         --TODO: check if this is not to late ant if we should work with variables?
         case currentState is
             when idle =>
+                staat <= "00";
                 nextState <= readAddress;
                 done <= '1';
             when readAddress =>
+                staat <= "01";
                 done <= '0';
                 if(data_bus = controller_address) then
                     nextState <= readData;
@@ -55,6 +59,7 @@ begin
                     nextState <= idle;
                 end if ;
             when readData =>
+                staat <= "10";
                 data_out <= data_bus;
                 nextState <= idle;
             end case;
