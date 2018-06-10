@@ -34,7 +34,6 @@ begin
 
 
     process(sc)
-    variable data_tijd : real := 0.0;
     begin
         --check how long sc was high to give right value.
         --We know the SC is 50hz
