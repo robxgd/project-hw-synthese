@@ -41,18 +41,18 @@ begin
     --     end if;
     -- end process;
 
-    process(clk)
+    process(clk,rst)
     begin
       if (rst = '1') then
           --servo to 0 rad ==> data is 127
           data_out <= "01111111";
           currentState <= idle;
-      else
+      elsif rising_edge(clk) then
         case currentState is
             when idle =>
                 staat <= "00";
                 if(set = '1') then
-                    if(data_bus= controller_address) then
+                    if(data_bus = controller_address) then
                         currentState <= readAddress;
                         done <= '0';
                     end if;

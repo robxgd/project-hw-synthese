@@ -11,8 +11,7 @@ entity servo is
         sc: in std_logic;
         -- set  : in std_logic;
         data  : in std_logic_vector(7 downto 0); --data and address
-        pwm : out std_logic;
-        done : out std_logic
+        pwm : out std_logic
     );
 end entity;
 
@@ -25,10 +24,10 @@ architecture behaviour of servo is
 begin
     process(clk,rst)
     begin
-  
-
+      if rst = '1' then
+        pwm <= '0';
         --we start the pwm signal every clock. if it is not neceserry, de sc process will stop it.
-        if rising_edge(clk) then
+      elsif rising_edge(clk) then
             pwm <= '1';
         end if;
     end process;
@@ -49,13 +48,11 @@ begin
             --we decide to make the servo period 1.96 microsec = 0.5ms/256
 
             --1.25/0.00196 = 637.755102041
-            
+
             if(real(pwm_timer) >= ((1.25/servo_period_ms) + real(to_integer(unsigned(data))))) then
-
-
                 pwm <= '0';
                 pwm_timer <= 0;
-            end if; 
+            end if;
         end if;
     end process;
 

@@ -8,7 +8,7 @@ end entity;
 architecture test of tb_servo is
   -- input signalen
   signal clk, rst, sc, set : std_logic := '0';
-  signal data_bus : std_logic_vector(7 downto 0);
+  signal data_bus : std_logic_vector(7 downto 0) := (others => '0');
 
   -- output signalen
   signal pwm: std_logic := '0';
@@ -66,12 +66,11 @@ begin
     begin
       -- Initialiseren
       rst <='1';
-      pos <= 125:
       wait for clkPeriod;
       rst <= '0';
-      wait for 50 ms;
+      wait for 5*clkPeriod;
       -- Posities testen
-      while (pos < 256) loop
+      while (pos < 255) loop
         wait until rising_edge(clk);
         set <= '1';
         data_bus <= "01010101";
