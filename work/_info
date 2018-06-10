@@ -1,0 +1,104 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d//Client/H$$/Documents/GitHub/project-hw-synthese
+T_opt
+!s110 1528641858
+VKzde?W:WWlL;TIdeF6Leo2
+04 17 4 work tb_datacontroller test 1
+=1-d067e5ec78da-5b1d3940-3c8-4238
+o-quiet -auto_acc_if_foreign -work work
+n@_opt
+OE;O;10.4;61
+Edata_controller
+w0
+Z1 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8//Client/H$$/Documents/GitHub/project-hw-synthese/data_controller.vhdl
+Z6 F//Client/H$$/Documents/GitHub/project-hw-synthese/data_controller.vhdl
+l0
+L9
+V5ejjO@j`NZ_Lffo?][E?A0
+!s100 ZbGb@;<aW_J?zmJ_Fm]PC3
+Z7 OE;C;10.4;61
+32
+!s110 1528641829
+!i10b 1
+Z8 !s108 1528641828.447000
+Z9 !s90 -reportprogress|300|-work|work|//Client/H$/Documents/GitHub/project-hw-synthese/data_controller.vhdl|
+Z10 !s107 //Client/H$/Documents/GitHub/project-hw-synthese/data_controller.vhdl|
+!i113 0
+Z11 o-work work
+Z12 tExplicit 1
+Abehaviour
+R1
+R2
+R3
+R4
+Z13 DEx4 work 15 data_controller 0 22 5ejjO@j`NZ_Lffo?][E?A0
+l32
+L26
+Ve8<:GOdna0?ZRk?7S30m10
+!s100 LmPYV4T47TG?XLXUk><Fc2
+R7
+32
+!s110 1528641831
+!i10b 1
+R8
+R9
+R10
+!i113 0
+R11
+R12
+Etb_datacontroller
+w0
+R2
+R3
+R4
+R0
+Z14 8//Client/H$$/Documents/GitHub/project-hw-synthese/tb_datacontroller.vhdl
+Z15 F//Client/H$$/Documents/GitHub/project-hw-synthese/tb_datacontroller.vhdl
+l0
+L5
+VogOoM?HM4WeS?fNSfz[KM2
+!s100 TJnE5CF9:lZTV`82LPeHJ3
+R7
+32
+Z16 !s110 1528641840
+!i10b 1
+Z17 !s108 1528641839.977000
+Z18 !s90 -reportprogress|300|-work|work|//Client/H$/Documents/GitHub/project-hw-synthese/tb_datacontroller.vhdl|
+Z19 !s107 //Client/H$/Documents/GitHub/project-hw-synthese/tb_datacontroller.vhdl|
+!i113 0
+R11
+R12
+Atest
+R1
+R13
+R2
+R3
+R4
+DEx4 work 17 tb_datacontroller 0 22 ogOoM?HM4WeS?fNSfz[KM2
+l25
+L8
+VO57K0adO;PonFNzBo6?gB0
+!s100 FzKWVQz;c0X4Mf_U7EZGH1
+R7
+32
+R16
+!i10b 1
+R17
+R18
+R19
+!i113 0
+R11
+R12
