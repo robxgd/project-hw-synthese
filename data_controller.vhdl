@@ -22,7 +22,7 @@ end entity;
 architecture behaviour of data_controller is
     --we have three types of states
     type state is (idle, readAddress, readData);
-    signal currentState : state := idle; 
+    signal currentState : state := idle;
     signal nextState    : state;
 
 begin
@@ -46,18 +46,17 @@ begin
         case currentState is
             when idle =>
                 nextState <= readAddress;
+                done <= '1';
             when readAddress =>
                 done <= '0';
                 if(data_bus =controller_address) then
                     nextState <= readData;
-                else 
+                else
                     nextState <= idle;
-                end if ; 
+                end if ;
             when readData =>
                 data_out <= data_bus;
                 nextState <= idle;
             end case;
     end process;
 end architecture;
-
-    
