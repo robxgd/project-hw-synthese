@@ -49,7 +49,7 @@ begin
                 done <= '1';
             when readAddress =>
                 done <= '0';
-                if(data_bus =controller_address) then
+                if(data_bus = controller_address) then
                     nextState <= readData;
                 else
                     nextState <= idle;

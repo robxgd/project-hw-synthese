@@ -25,12 +25,12 @@ architecture behaviour of servo is
 begin
     process(clk,rst)
     begin
-        if rst = '1' then
-
+      if rst = '1' then
+        pwm <= '0';
         --we start the pwm signal every clock. if it is not neceserry, de sc process will stop it.
       elsif rising_edge(clk) then
             pwm <= '1';
-        end if;
+      end if;
     end process;
 
 
@@ -48,7 +48,7 @@ begin
             -- this means we have to divide the 0.5ms in between over the 256 possibilities of the data
             --we decide to make the servo period 1.96 microsec = 0.5ms/256
 
-            if(pwm_timer >= 1.25 + real(real(to_integer(unsigned(data)))*servo_period_ms)) then
+            if( (pwm_timer*servo_period_ms) >= 1.25 + (real(to_integer(unsigned(data)))*servo_period_ms)) then
                 pwm <= '0';
                 pwm_timer <= 0.0;
             end if;
