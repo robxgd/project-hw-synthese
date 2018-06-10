@@ -68,6 +68,7 @@ begin
       rst <='1';
       wait for clkPeriod;
       rst <= '0';
+      wait for 50 ms;
       -- Posities testen
       while (pos < 256) loop
         wait until rising_edge(clk);

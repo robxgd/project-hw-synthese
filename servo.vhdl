@@ -25,7 +25,18 @@ architecture behaviour of servo is
 begin
     process(clk,rst)
     begin
+<<<<<<< HEAD
+        if rst = '1' then
+            pwm<= '0';
+=======
 
+<<<<<<< HEAD
+=======
+        if rst = '1' then
+            pwm<= '0';
+
+>>>>>>> c2be8a06895d7c60c301d08c6e3c325525b945fd
+>>>>>>> 6a512c2345a98a1b30565a5adfc55a08491ec1f4
         --we start the pwm signal every clock. if it is not neceserry, de sc process will stop it.
         if rising_edge(clk) then
             pwm <= '1';
@@ -34,8 +45,8 @@ begin
 
 
     process(sc)
+    variable data_tijd : real := 0.0;
     begin
-
         --check how long sc was high to give right value.
         --We know the SC is 50hz
         -- each time we com in this function we add 1 to the timer. to know tehe time we multiply the counter with the period = 20ms
@@ -47,10 +58,19 @@ begin
             -- this means we have to divide the 0.5ms in between over the 256 possibilities of the data
             --we decide to make the servo period 1.96 microsec = 0.5ms/256
 
+<<<<<<< HEAD
+            if(pwm_timer >= 1.25 + real(to_integer(unsigned(data)))*servo_period_ms) then
+=======
             --1.25/0.00196 = 637.755102041
             
             if(real(pwm_timer) >= ((1.25/servo_period_ms) + real(to_integer(unsigned(data))))) then
+<<<<<<< HEAD
                 --pwm <= '0';
+=======
+
+>>>>>>> c2be8a06895d7c60c301d08c6e3c325525b945fd
+                pwm <= '0';
+>>>>>>> 6a512c2345a98a1b30565a5adfc55a08491ec1f4
                 pwm_timer <= 0;
             end if; 
         end if;
