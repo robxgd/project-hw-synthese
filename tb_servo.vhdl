@@ -7,12 +7,12 @@ end entity;
 
 architecture test of tb_servo is
   -- input signalen
-  signal clk, rst, sc, set : std_logic;
+  signal clk, rst, sc, set : std_logic := '0';
   signal data_bus : std_logic_vector(7 downto 0);
 
   -- output signalen
-  signal pwm, done : std_logic;
-
+  signal pwm: std_logic := '0';
+  signal done : std_logic := '1';
   -- extra
   signal EndOfSim    : boolean := false;
   signal pos         : integer := 0;
