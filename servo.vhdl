@@ -26,13 +26,10 @@ begin
     process(clk,rst)
     begin
 
-        if rst = '1' then
-            pwm<= '0';
-
         --we start the pwm signal every clock. if it is not neceserry, de sc process will stop it.
-        elsif rising_edge(clk) then
+        if rising_edge(clk) then
             pwm <= '1';
-      end if;
+        end if;
     end process;
 
 
@@ -51,11 +48,11 @@ begin
             --we decide to make the servo period 1.96 microsec = 0.5ms/256
 
             --1.25/0.00196 = 637.755102041
+            
             if(real(pwm_timer) >= ((1.25/servo_period_ms) + real(to_integer(unsigned(data))))) then
-
-                pwm <= '0';
+                --pwm <= '0';
                 pwm_timer <= 0;
-            end if;
+            end if; 
         end if;
     end process;
 

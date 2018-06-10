@@ -26,7 +26,7 @@ architecture behaviour of data_controller is
     signal nextState    : state;
 
 begin
-    process(clk)
+    process(clk, rst)
     begin
         --check reset
         if (rst = '1') then
@@ -48,8 +48,8 @@ begin
                 nextState <= readAddress;
                 done <= '1';
             when readAddress =>
-                
-                if(data_bus =controller_address) then
+ 
+                if(to_integer(unsigned(data_bus)) = to_integer(unsigned(controller_address))) then
                     nextState <= readData;
                 else
                     nextState <= idle;
