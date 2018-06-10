@@ -19,6 +19,7 @@ architecture test of tb_datacontroller is
   signal staat : std_logic_vector(1 downto 0) := "00";
   constant clkPeriod : time := 20 ms;
   constant dutyCycle : real := 0.5;
+  constant adress : std_logic_vector(7 downto 0) := "01010101";
 
 
   begin
@@ -62,6 +63,14 @@ architecture test of tb_datacontroller is
           set <= '1';
           data_in <= "01010101";
           wait until rising_edge(clk);
+
+          -- report integer'image(to_integer(unsigned(data_in))) & " , " & integer'image(to_integer(unsigned(adress)));
+          -- if data_in = adress then
+          --   report "adress is juist";
+          -- else
+          --   report "adress is fout";
+          -- end if;
+
           data_in <= std_logic_vector(to_unsigned(pos, 8));
           wait until rising_edge(clk);
   			  set <= '0';
@@ -72,14 +81,6 @@ architecture test of tb_datacontroller is
         report "Test done";
         wait;
       end process;
-
-
-
-
-
-
-
-
 
 
 

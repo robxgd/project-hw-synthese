@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 
 entity data_controller is
     generic(
-		controller_address : std_logic_vector
+		controller_address : std_logic_vector(7 downto 0) 
 	);
 
     port(
@@ -22,7 +22,7 @@ end entity;
 
 architecture behaviour of data_controller is
     --we have three types of states
-    type state is (idle, readAddress);
+    type state is (idle, readAddress, wachtstaat, temp);
     signal currentState : state := idle;
     signal nextState    : state;
 
@@ -47,21 +47,28 @@ begin
         case currentState is
             when idle =>
                 staat <= "00";
-                if(set=1) then
-                    if(data_bus = controller_address) then
-                        nextState <= readAddress;
-                    end if;
+                if(set='1') then
+                    
+                    nextState<=temp;
                 end if;
+
                 done <= '1';
-            when readAddress =>
+            when temp =>
+                    staat <= "11";
+                nextState<= wachtstaat;
+            when wachtstaat =>
                 staat <= "01";
-                done <= '0';
-                if(data_bus = controller_address) then
-                    nextState <= readData;
-                else
+                if(to_integer(unsigned(data_bus)) = to_integer(unsigned(controller_address))) then
+                    nextState <= readAddress;
+                else 
                     nextState <= idle;
-                end if ;
-       
+                end if;
+            when readAddress =>
+                staat <= "10";
+                done <= '0';
+                nextState <= idle;
+                
+                        
             end case;
     end process;
 end architecture;
